@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}商品一覧{% endblock %}
+
+{% block content %}
+
+<h4>商品一覧</h4>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>商品名</th>
+      <th>カテゴリ</th>
+      <th>原産地</th>
+      <th>現在庫</th>
+      <th>入庫</th>
+      <th>出庫</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for item in items %}
+    <tr>
+      <td>{{ item.id }}</td>
+      <td>{{ item.name }}</td>
+      <td>{{ item.category }}</td>
+      <td>{{ item.origin }}</td>
+      <td>{{ item.stock }} {{ item.unit }}</td>
+
+      <!-- 入庫 -->
+      <td>
+        <form action="/stock_in/{{ item.id }}" method="post">
+          <input type="number" name="qty" step="0.1" style="width:70px;">
+          <button>登録</button>
+        </form>
+      </td>
+
+      <!-- 出庫 -->
+      <td>
+        <form action="/stock_out/{{ item.id }}" method="post">
+          <input type="number" name="qty" step="0.1" style="width:70px;">
+          <button>登録</button>
+        </form>
+      </td>
+
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+<h2>削除された商品一覧</h2>
+
+<table border="1">
+<tr>
+    <th>ID</th>
+    <th>商品名</th>
+</tr>
+
+{% for item in items %}
+<tr>
+    <td>{{ item.id }}</td>
+    <td>{{ item.name }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/">商品一覧へ戻る</a>

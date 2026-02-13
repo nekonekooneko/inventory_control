@@ -1,0 +1,39 @@
+<h2>出庫登録</h2>
+
+<form method="post">
+
+商品：
+<select name="item_id" id="item_select">
+{% for item in items %}
+  <option value="{{ item.id }}" data-unit="{{ item.unit }}">
+    {{ item.name }}
+  </option>
+{% endfor %}
+</select>
+
+<br><br>
+
+数量：
+<input type="number" step="0.1" name="quantity">
+<span id="unit_display"></span>
+
+<br><br>
+
+<button type="submit">出庫登録</button>
+
+</form>
+
+<a href="/">戻る</a>
+
+<script>
+const select = document.getElementById("item_select");
+const unitDisplay = document.getElementById("unit_display");
+
+function updateUnit() {
+  const selected = select.options[select.selectedIndex];
+  unitDisplay.textContent = selected.dataset.unit || "";
+}
+
+updateUnit();
+select.addEventListener("change", updateUnit);
+</script>

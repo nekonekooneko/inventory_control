@@ -1,0 +1,22 @@
+<h2>入出庫履歴</h2>
+
+<table border="1">
+<tr>
+    <th>日付</th>
+    <th>商品</th>
+    <th>種別</th>
+    <th>数量</th>
+</tr>
+
+{% for row in data %}
+<tr>
+    <td>{{ row.transaction_date[:16] }}</td>
+    <td>{{ row.item_name }}</td>
+    <td>{{ row.transaction_type }}</td>
+    <td>{{ row.quantity }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<a href="/">戻る</a>

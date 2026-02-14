@@ -52,7 +52,7 @@ def add():
         conn.commit()
         conn.close()
 
-        return redirect("/stock_in")
+        return redirect("/")
 
     return render_template("add.html")
 
